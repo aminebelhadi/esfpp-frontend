@@ -1,0 +1,679 @@
+:root {
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  
+  --indigo-50: #eef2ff;
+  --indigo-100: #e0e7ff;
+  --indigo-200: #c7d2fe;
+  --indigo-600: #4f46e5;
+  --indigo-700: #4338ca;
+  
+  --red-50: #fef2f2;
+  --red-100: #fee2e2;
+  --red-200: #fecaca;
+  --red-300: #fca5a5;
+  --red-500: #ef4444;
+  --red-700: #b91c1c;
+  
+  --orange-50: #fff7ed;
+  --orange-100: #ffedd5;
+  --orange-200: #fed7aa;
+  --orange-300: #fdba74;
+  --orange-500: #f97316;
+  --orange-700: #c2410c;
+  
+  --emerald-50: #ecfdf5;
+  --emerald-100: #d1fae5;
+  --emerald-200: #a7f3d0;
+  --emerald-300: #6ee7b7;
+  --emerald-500: #10b981;
+  --emerald-700: #047857;
+  
+  --white: #ffffff;
+}
+
+/* ==================== GLOBAL ==================== */
+* {
+  box-sizing: border-box;
+}
+
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--slate-100);
+  color: var(--slate-800);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+/* ==================== HEADER ==================== */
+.header {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--slate-200);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  position: relative;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-icon-box {
+  background-color: var(--indigo-600);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.header-icon {
+  color: var(--white);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.header-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--slate-800);
+  margin: 0;
+}
+
+.header-subtitle {
+  font-size: 0.875rem;
+  color: var(--slate-500);
+  margin: 0;
+}
+
+/* ==================== FILTRES ==================== */
+.filters-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--slate-500);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.filter-select {
+  border: 1px solid var(--slate-300);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  outline: none;
+  font-weight: 500;
+  background-color: var(--slate-50);
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  box-shadow: 0 0 0 2px var(--indigo-500);
+}
+
+.filter-select.select-white {
+  background-color: var(--white);
+}
+
+.save-btn-container {
+  margin-left: 1rem;
+  margin-top: 1.25rem;
+}
+
+.save-btn {
+  background-color: var(--indigo-600);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  border: none;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: var(--indigo-700);
+}
+
+.save-btn-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ==================== CONTENU PRINCIPAL ==================== */
+.main-content {
+  flex: 1;
+  padding: 1.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--slate-100);
+}
+
+.table-card {
+  background-color: var(--white);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  border: 1px solid var(--slate-200);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ==================== LEGENDE ==================== */
+.legend-container {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--slate-200);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+  background-color: rgba(248, 250, 252, 0.5); /* slate-50/50 */
+}
+
+.legend-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--slate-700);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--slate-600);
+}
+
+.legend-box {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.125rem;
+}
+
+.legend-box.examen { background-color: var(--red-100); border: 1px solid var(--red-300); }
+.legend-box.controle { background-color: var(--orange-100); border: 1px solid var(--orange-300); }
+.legend-box.vacances { background-color: var(--emerald-100); border: 1px solid var(--emerald-300); }
+
+/* ==================== TABLEAU ==================== */
+.table-wrapper {
+  position: relative;
+  background-color: var(--white);
+  overflow: auto;
+  flex: 1;
+}
+
+.logigramme-table {
+  width: 100%;
+  font-size: 0.875rem;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.th-unites {
+  width: 250px;
+  min-width: 250px;
+  background-color: var(--slate-100);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: var(--slate-700);
+  border-bottom: 2px solid var(--slate-300);
+}
+
+.th-formateur {
+  width: 200px;
+  min-width: 200px;
+  background-color: var(--slate-100);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: var(--slate-700);
+  border-bottom: 2px solid var(--slate-300);
+}
+
+.th-vhg {
+  width: 80px;
+  min-width: 80px;
+  background-color: var(--slate-100);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: var(--slate-700);
+  text-align: center;
+  border-bottom: 2px solid var(--slate-300);
+}
+
+.th-mois {
+  background-color: var(--slate-50);
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: 700;
+  color: var(--slate-700);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  border-bottom: 2px solid var(--slate-300);
+}
+
+.th-empty {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--slate-200);
+}
+
+.th-semaine {
+  min-width: 40px;
+  padding: 0.5rem 0.25rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--slate-500);
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s;
+  background-color: var(--white);
+  border-bottom: 1px solid transparent; /* Pour éviter les décalages */
+}
+
+.th-semaine:hover {
+  background-color: var(--slate-50);
+}
+
+/* Couleurs dynamiques entête semaine */
+.th-semaine.event-examen {
+  background-color: var(--red-50);
+  color: var(--red-700);
+  border-bottom: 1px solid var(--red-200);
+}
+.th-semaine.event-controle {
+  background-color: var(--orange-50);
+  color: var(--orange-700);
+  border-bottom: 1px solid var(--orange-200);
+}
+.th-semaine.event-vacances {
+  background-color: var(--emerald-50);
+  color: var(--emerald-700);
+  border-bottom: 1px solid var(--emerald-200);
+}
+
+/* ==================== TOOLTIPS ==================== */
+.tooltip-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.25rem;
+  width: max-content;
+  z-index: 50;
+}
+
+.tooltip-content {
+  background-color: var(--slate-800);
+  color: var(--white);
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.tooltip-title {
+  font-weight: 700;
+  margin-bottom: 0.125rem;
+}
+
+.tooltip-date {
+  color: var(--slate-300);
+}
+
+.tooltip-badge {
+  margin-top: 0.25rem;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.tooltip-badge.examen { background-color: rgba(239, 68, 68, 0.2); color: var(--red-300); }
+.tooltip-badge.vacances { background-color: rgba(16, 185, 129, 0.2); color: var(--emerald-300); }
+.tooltip-badge.controle { background-color: rgba(249, 115, 22, 0.2); color: var(--orange-300); }
+
+.tooltip-arrow {
+  position: absolute;
+  top: -0.25rem;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--slate-800);
+}
+
+/* ==================== CORPS DU TABLEAU ==================== */
+.tr-module {
+  transition: background-color 0.2s;
+}
+
+.tr-module td {
+  transition: background-color 0.2s;
+}
+
+.tr-module:hover td.td-unites,
+.tr-module:hover td.td-formateur {
+  background-color: var(--slate-50);
+}
+
+.tr-module:hover td.td-vhg {
+  background-color: var(--slate-100);
+}
+
+.td-unites {
+  background-color: var(--white);
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  color: var(--slate-800);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.td-formateur {
+  background-color: var(--white);
+  padding: 0.75rem 1rem;
+  color: var(--slate-600);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.formateur-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.formateur-avatar {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  background-color: var(--indigo-100);
+  color: var(--indigo-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.td-vhg {
+  background-color: var(--slate-50);
+  padding: 0.75rem 1rem;
+  text-align: center;
+  font-weight: 700;
+  color: var(--slate-700);
+  border-right: 2px solid var(--slate-200);
+}
+
+.td-cell {
+  padding: 0.5rem 0.25rem;
+  text-align: center;
+}
+
+.td-cell.has-heures {
+  background-color: rgba(238, 242, 255, 0.3); /* indigo-50/30 */
+}
+
+.td-event {
+  padding: 0.25rem;
+  text-align: center;
+}
+
+.td-event.bg-examen { background-color: rgba(254, 226, 226, 0.5); }
+.td-event.bg-vacances { background-color: rgba(209, 250, 229, 0.5); }
+.td-event.bg-controle { background-color: rgba(255, 237, 213, 0.5); }
+
+.heures-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  color: var(--indigo-700);
+  font-weight: 600;
+  font-size: 0.75rem;
+  background-color: var(--indigo-100);
+  box-shadow: inset 0 0 0 1px var(--indigo-200);
+}
+
+.empty-dash {
+  color: var(--slate-300);
+  font-size: 0.75rem;
+}
+
+/* ==================== PIED DE TABLEAU (FOOTER) ==================== */
+.tr-footer {
+  background-color: var(--slate-50);
+  font-weight: 700;
+  border-top: 2px solid var(--slate-300);
+}
+
+.td-footer-label {
+  background-color: var(--slate-50);
+  padding: 1rem;
+  text-align: right;
+  color: var(--slate-700);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.td-footer-total {
+  background-color: var(--slate-100);
+  padding: 1rem;
+  text-align: center;
+  color: var(--indigo-700);
+}
+
+.td-footer-cell {
+  padding: 0.75rem 0.25rem;
+  text-align: center;
+}
+
+.td-footer-cell-text {
+  padding: 0.75rem 0.25rem;
+  text-align: center;
+  color: var(--slate-700);
+  font-size: 0.75rem;
+}
+
+.footer-badge {
+  font-size: 9px;
+  color: var(--white);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  display: inline-block;
+}
+
+.footer-badge.badge-examen { background-color: var(--red-500); }
+.footer-badge.badge-vacances { background-color: var(--emerald-500); }
+.footer-badge.badge-controle { background-color: var(--orange-500); }
+
+/*  */
+/* ==========================================================================
+   CHAMPS DE SAISIE (INLINE EDITING)
+   ========================================================================== */
+.cell-input {
+  width: 100%;
+  height: 2rem;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-weight: 600;
+  color: var(--primary);
+  outline: none;
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.cell-input:focus, .cell-input:hover {
+  background-color: #e0e7ff; /* Légère surbrillance au focus */
+  cursor: text;
+}
+
+/* Cacher les flèches du champ number */
+.cell-input::-webkit-outer-spin-button,
+.cell-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.td-cell { padding: 0.25rem; } /* On réduit le padding pour laisser la place à l'input */
+
+/*  */
+/* ==================== MODAL ÉVÉNEMENTS ==================== */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(30, 41, 59, 0.6); /* slate-800 semi-transparent */
+  z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(2px);
+}
+.modal-box {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  width: 320px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+.modal-title { font-size: 1.125rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--slate-800); text-align: center; }
+.modal-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+.modal-btn {
+  padding: 0.75rem; border: 1px solid var(--slate-200); border-radius: 0.375rem;
+  cursor: pointer; font-weight: 600; font-size: 0.875rem; text-align: center;
+  transition: all 0.2s; background: var(--white);
+}
+.modal-btn.aucun { color: var(--slate-600); }
+.modal-btn.aucun:hover { background-color: var(--slate-100); }
+.modal-btn.examen { color: var(--red-700); border-color: var(--red-300); }
+.modal-btn.examen:hover { background-color: var(--red-50); }
+.modal-btn.controle { color: var(--orange-700); border-color: var(--orange-300); }
+.modal-btn.controle:hover { background-color: var(--orange-50); }
+.modal-btn.vacances { color: var(--emerald-700); border-color: var(--emerald-300); }
+.modal-btn.vacances:hover { background-color: var(--emerald-50); }
+.modal-cancel { 
+  margin-top: 1rem; width: 100%; color: var(--slate-500); border: none; 
+  background: transparent; cursor: pointer; font-size: 0.875rem; padding: 0.5rem;
+}
+.modal-cancel:hover { color: var(--slate-800); }
+
+/* 
+ */
+
+ /* ==================== IMPRESSION PDF (FICHE FORMATEUR) ==================== */
+@media print {
+  /* On cache toute l'interface normale de l'application */
+  body * {
+    visibility: hidden;
+  }
+  
+  /* On ne garde visible QUE la fiche et ses enfants */
+  .fiche-print-zone, .fiche-print-zone * {
+    visibility: visible;
+  }
+  
+  /* On repositionne la fiche tout en haut à gauche de la page imprimée */
+  .fiche-print-zone {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* On cache spécifiquement les boutons à l'intérieur de la fiche */
+  .no-print {
+    display: none !important;
+  }
+}
+
+/*  */
+/* ==================== DASHBOARD ==================== */
+.progress-bg { background-color: var(--slate-200); border-radius: 9999px; height: 0.75rem; width: 100%; overflow: hidden; margin-top: 0.75rem; }
+.progress-fill { height: 100%; border-radius: 9999px; transition: width 1s ease-in-out; }
+.progress-fill.low { background-color: var(--indigo-300); }
+.progress-fill.mid { background-color: var(--indigo-500); }
+.progress-fill.high { background-color: var(--emerald-500); }
+
+.alert-card { padding: 1rem; border-radius: 0.5rem; border-left: 4px solid; margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 1rem; }
+.alert-card.EXAMEN { background-color: var(--red-50); border-left-color: var(--red-500); color: var(--red-800); }
+.alert-card.VACANCES { background-color: var(--emerald-50); border-left-color: var(--emerald-500); color: var(--emerald-800); }
+.alert-card.CONTROLE { background-color: var(--orange-50); border-left-color: var(--orange-500); color: var(--orange-800); }
+
+/*  */
+
+/* ==================== BOUTON EXPORT EXCEL ==================== */
+.export-btn {
+  background-color: var(--emerald-700);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  border: none;
+  cursor: pointer;
+}
+
+/* Effet au survol : devient plus sombre et se soulève légèrement */
+.export-btn:hover:not(:disabled) {
+  background-color: var(--emerald-700);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3);
+}
+
+/* Style quand le bouton est désactivé (pendant le chargement) */
+.export-btn:disabled {
+  background-color: var(--emerald-400);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
