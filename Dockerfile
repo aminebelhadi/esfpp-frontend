@@ -9,6 +9,7 @@ RUN npm run build
 
 #image build stage
 FROM nginx:alpine
+RUN apk upgrade --no-cache
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d
 COPY --from=builder /app/dist /usr/share/nginx/html
