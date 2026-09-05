@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: esfpp-frontend
+  labels:
+    app: esfpp-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: esfpp-frontend
+  template:
+    metadata:
+      labels:
+        app: esfpp-frontend
+    spec:
+      containers:
+      - name: esfpp-frontend
+        image: 119697987992.dkr.ecr.eu-north-1.amazonaws.com/esfpp-frontend:latest
+        ports:
+        - containerPort: 80

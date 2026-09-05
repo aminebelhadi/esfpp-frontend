@@ -44,5 +44,16 @@ pipeline {
                 sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO_NAME}:latest"
             }
         }
+        stage('Déploiement sur AWS EKS') {
+            steps {
+                echo "Connexion au cluster Kubernetes et Déploiement..."
+                // On met à jour la configuration pour que kubectl puisse parler au cluster
+                // (Note : on utilise bien la région eu-north-1 que tu as choisie)
+                sh "aws eks update-kubeconfig --region eu-north-1 --name esfpp-cluster"
+                
+                // On applique tous les fichiers du dossier k8s
+                sh "kubectl apply -f k8s/"
+            }
+        }
     }
 }
